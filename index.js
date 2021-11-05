@@ -45,6 +45,27 @@ app.post("/reviews", async (req, res) => {
   }
 });
 
+app.patch("/reviews/:id", async (req, res) => {
+    try {
+    const parameter = req.params.id;
+      const result = await db.updateReview(parameter,req.body);
+      res.status(200).json({ result });
+    } catch (error) {
+      res.json(error);
+    }
+  });
+  
+
+app.delete("/reviews/:id", async (req, res) => {
+    try {
+      const parameter = req.params.id;
+      await db.deleteReview(parameter);
+      res.send({ success: true });
+    } catch (error) {
+      res.json(error);
+    }
+  });
+
 // demo post
 // {
 //     id: 'r1',

@@ -15,7 +15,7 @@ function deleteReview (id){
     return knex("reviewtable").where('id',id).del()
 }
 function updateReview (id, updatedVersion){
-    return knex("reviewtable").where('id',id).update(updatedVersion)
+    return knex("reviewtable").where({id:id}).update(updatedVersion)
 }
 
 
