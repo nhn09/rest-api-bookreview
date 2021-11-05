@@ -59,8 +59,8 @@ app.patch("/reviews/:id", async (req, res) => {
 app.delete("/reviews/:id", async (req, res) => {
     try {
       const parameter = req.params.id;
-      await db.deleteReview(parameter);
-      res.send({ success: true });
+      const result =await db.deleteReview(parameter);
+      res.send({ success: result });
     } catch (error) {
       res.json(error);
     }
